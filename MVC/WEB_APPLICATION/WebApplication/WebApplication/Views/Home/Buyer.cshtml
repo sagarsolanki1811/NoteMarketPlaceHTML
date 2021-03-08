@@ -1,0 +1,113 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<WebApplication.Models.BuyerReq>
+
+
+@{
+    Layout = "~/Views/Shared/H_F_1.cshtml";
+    ViewBag.Title = "buyerRequests";
+    //IEnumerable<WebApplication.Models.BuyerReq> list = ViewBag.buyerList as IEnumerable<WebApplication.Models.BuyerReq>;
+    IPagedList<WebApplication.Models.BuyerReq> list = ViewBag.buyerList as IPagedList<WebApplication.Models.BuyerReq>;
+    int sr_no = 1;
+    var pageNumber = Request["page"];
+    int p_no = pageNumber == null ? 1 : Int16.Parse(pageNumber);
+
+
+}
+
+<!DOCTYPE html>
+<html>
+<body class="ForFooterAtEnd">
+    <div class="container">
+        <div class="row searchBarSection">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <h1>Buyer Requests</h1>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 input-group form-inline d-flex justify-content-center md-form form-sm mt-0">
+
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">
+                        <img src="~/Content/Images/Dashboard/search.jpg" alt="search">
+                    </span>
+                </div>
+
+                <!--<input type="text" class="form-control" aria-label="search" aria-describedby="addon-wrapping"
+                placeholder="search" id="txtSearch">-->
+
+                <input type="text" class="form-control" aria-label="search" aria-describedby="addon-wrapping"
+                       placeholder="search" id="searchText">
+                <!-- <button type="submit" class="btn shadow-none">SEARCH</button>-->
+
+
+                <input type="button" class="btn shadow-none" value="SEARCH" onclick="location.href = '@Url.Action("Buyer","Home")?search=' + $('#searchText').val()" />
+
+            </div>
+
+        </div>
+        <div class="table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm">
+            <table class="table progressTable text-center">
+                <thead>
+                    <tr>
+                        <th>SR NO.</th>
+                        <th>@Html.ActionLink("NOTE TITLE", "Buyer", new { sortBy = ViewBag.sortByTitle, search = Request.QueryString["search"] })</th>
+                        <th>@Html.ActionLink("CATEGORY", "Buyer", new { sortBy = ViewBag.sortByCategory, search = Request.QueryString["search"] })</th>
+                        <th>@Html.ActionLink("BUYER", "Buyer", new { sortBy = ViewBag.sortByBuyer, search = Request.QueryString["search"] })</th>
+                        <th>@Html.ActionLink("PHONE NO.", "Buyer", new { sortBy = ViewBag.sortByPhoneNo, search = Request.QueryString["search"] })</th>
+                        <th>@Html.ActionLink("SELL TYPE", "Buyer", new { sortBy = ViewBag.sortBySellType, search = Request.QueryString["search"] })</th>
+                        <th>@Html.ActionLink("PRICE", "Buyer", new { sortBy = ViewBag.sortByPrice, search = Request.QueryString["search"] })</th>
+                        <th>@Html.ActionLink("DOWNLOAD DATE/TIME", "Buyer", new { sortBy = ViewBag.sortByDate, search = Request.QueryString["search"] })</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (WebApplication.Models.BuyerReq element in list)
+                    {
+                        <tr>
+                            <td>@(1*(p_no-1)+sr_no)</td>
+                            <td>@element.NoteDetail.File_Name</td>
+                            <td>@element.NoteDetail.Category</td>
+                            <td>@element.User.Email</td>
+                            <td>@element.User.Phone_Number_Country_Code @element.User.Phone_Number</td>
+                            @if (@element.NoteDetail.IsPaid == false)
+                            {
+                                <td>Free</td>
+                            }
+                            else
+                            {
+                                <td>Paid</td>
+                            }
+                            <td>Rs. @element.NoteDetail.Sell_Price</td>
+                            <td>@element.Req_Created_Date</td>
+                            <td class="dropdown">
+                                <a href="@Url.Action("Buyer", "Home", new { id = element.note_id })" style="margin-right:15px;">
+                                    <i class="far fa-eye"></i>
+                                </a>
+                                <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    @Html.ActionLink("Yes, I Received.", "Buyer", "Home", new { id = element.note_id, memberid = element.user_id }, new { @class = "dropdown-item shadow-none" })
+                                </div>
+                            </td>
+                        </tr>
+                        sr_no++;
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div>
+        <ul class="pagination justify-content-center">
+            @Html.PagedListPager(list, page => Url.Action("Buyer", new { page, search = Request.QueryString["search"], sortBy = Request.QueryString["sortBy"] }),
+           new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true }
+           )
+        </ul>
+    </div>
+</body>
+</html>
+

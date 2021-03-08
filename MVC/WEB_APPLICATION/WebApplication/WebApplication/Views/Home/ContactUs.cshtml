@@ -1,0 +1,74 @@
+﻿@model WebApplication.Models.ContactU
+
+@using WebApplication.Models
+
+
+@{
+    Layout = "~/Views/Shared/H_F_2.cshtml";
+    ViewBag.Title = "contactUs";
+    ContactU contact = ViewBag.obj;
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="photo-text">
+        <img src="~/Content/Images/Contact_Us/banner-with-overlay.jpg" alt="user-photo" style="width:100%;height:250px">
+        <h1>Contact Us</h1>
+    </div>
+    <div class="container">
+        <div class="form-heading">
+            <h1>Get In Touch</h1>
+            <h2>Let us know how to get back to you</h2>
+        </div>
+        @using (Html.BeginForm("ContactUs", "Home", FormMethod.Post))
+        {
+            <div class="row">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 row form-row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-row">
+                        @Html.LabelFor(m => m.Full_name)
+                        @if (contact != null)
+                        {
+                            @Html.EditorFor(model => model.Full_name, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your full name", @Value = contact.Full_name } })
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.Full_name, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your full name" } })
+                        }
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 form-row">
+                        @Html.LabelFor(m => m.Email)
+                        @if (contact != null)
+                        {
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your email address", @readonly = "readonly",@Value=contact.Email } })
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your email address" } })
+                        }
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        @Html.LabelFor(m => m.Subject)
+                        @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your subject" } })
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <!--rows=9 lineheight 20-->
+                    <div class="ContactClass">  
+                        @Html.LabelFor(m => m.Comments_Questions)
+                    </div>
+                    @Html.TextAreaFor(model => model.Comments_Questions, new { @class = "form-control shadow-none", placeholder = "comments...", @rows = 9 })
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <button type="submit" class="btn shadow-none">SUBMIT</button>
+                </div>
+            </div>
+            <div class="text-center">
+                <h3 class="text-center text-success">@TempData["ContactUs"]</h3>
+            </div>
+        }
+    </div>
+</body>
+</html>

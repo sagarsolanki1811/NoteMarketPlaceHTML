@@ -1,0 +1,254 @@
+#mobile-nav {
+  /*default mobile menu height should be 0.*/
+  height: 0%;
+  width: 100%;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: all 300ms linear;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#mobile-nav .navbar-nav {
+  flex-direction: column;
+}
+
+#mobile-nav ul li {
+  margin-bottom: 30px;
+}
+
+#mobile-nav ul li a {
+  text-transform: uppercase;
+}
+
+#mobile-nav-open-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 40px;
+  display: none;
+}
+
+#mobile-nav-close-btn {
+  font-weight: 700;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 40px;
+}
+
+@media (min-width:992px) and (max-width: 1199px) {
+  #noteImageData .row img {
+    width: 220px;
+    height: 350px;
+  }
+
+  #notesCustomers .cust {
+    padding: 10px 15px 0px 15px;
+  }
+}
+
+@media (min-width:768px) and (max-width: 991px) {
+  .searchCard:nth-child(3) {
+    margin-top: 30px;
+  }
+
+  .searchFilter .search-bg div:nth-child(n+2):nth-last-child(n+4) {
+    margin-bottom: 20px;
+  }
+
+  .dashboardData:nth-child(1) {
+    margin-bottom: 20px;
+  }
+
+  #noteImageData .row img {
+    height: 250px;
+  }
+
+  #notesCustomers .cust {
+    padding: 10px 10px 0px 10px;
+  }
+
+  #noteImageData {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width:576px) and (max-width: 767px) {
+  #nav-menu {
+    display: none !important;
+  }
+
+  #mobile-nav-open-btn {
+    display: block;
+  }
+
+  #mySoldNotes .searchBarSection div:nth-child(1) h1,
+  #myRejectedNotes .searchBarSection div:nth-child(1) h1,
+  #myDownload .searchBarSection div:nth-child(1) h1,
+  #buyerRequests .searchBarSection div:nth-child(1) h1,
+  #dashboard .searchBarSection div:nth-child(1) h1 {
+    margin-bottom: 20px;
+  }
+
+  .dashboardData:nth-child(1) {
+    margin-bottom: 20px;
+  }
+
+  .home-photo-content h2 {
+    font-size: 35px;
+    line-height: 45px;
+  }
+
+  .home-photo-content p {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  #homeAboutMarketPlace .row p {
+    font-size: 16px;
+  }
+
+  #homeAboutMarketPlace .row p:nth-child(1) {
+    margin-bottom: 20px;
+  }
+
+  #addNotes form button,
+  #addNotes form #addNoteSellPrice {
+    margin-top: 20px;
+  }
+
+  .searchCard:nth-child(2),
+  .searchCard:nth-child(3) {
+    margin-top: 30px;
+  }
+
+  .searchFilter .search-bg div:nth-child(n+2):nth-last-child(n+4) {
+    margin-bottom: 20px;
+  }
+
+  #notesCustomers h3 {
+    margin-top: 20px;
+  }
+
+  #noteImageData {
+    margin-bottom: 20px;
+  }
+
+  #homeHowItWorks .row .offset-md-2:nth-child(1) {
+    margin-bottom: 30px;
+  }
+
+  #contactUsForm .btn {
+    margin-top: 30px;
+  }
+}
+
+@media (min-width:320px) and (max-width: 575px) {
+  #nav-menu {
+    display: none !important;
+  }
+
+  #mobile-nav-open-btn {
+    display: block;
+  }
+
+  #mySoldNotes .searchBarSection div:nth-child(1) h1,
+  #myRejectedNotes .searchBarSection div:nth-child(1) h1,
+  #myDownload .searchBarSection div:nth-child(1) h1,
+  #buyerRequests .searchBarSection div:nth-child(1) h1,
+  #dashboard .searchBarSection div:nth-child(1) h1 {
+    margin-bottom: 20px;
+  }
+
+  .dashboardData {
+    flex-direction: column;
+  }
+
+  .dashboardData:nth-child(1) .dashboard-flex-content:nth-child(n),
+  .dashboardData:nth-child(2) .dashboard-flex-content:nth-child(n) {
+    width: 100%;
+    border: 1px solid #d1d1d1;
+  }
+
+  .dashboardData:nth-child(1) .dashboard-flex-content:nth-child(n),
+  .dashboardData:nth-child(2) .dashboard-flex-content:nth-child(n):nth-last-child(n+2) {
+    margin-bottom: 20px;
+  }
+
+  #addNotes form button,
+  #addNotes form #addNoteSellPrice {
+    margin-top: 20px;
+  }
+
+  .home-photo-content h2 {
+    font-size: 30px;
+    line-height: 45px;
+  }
+
+  .home-photo-content p {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  #homeAboutMarketPlace .row p {
+    font-size: 16px;
+  }
+
+  #homeAboutMarketPlace .row p:nth-child(1) {
+    margin-bottom: 20px;
+  }
+
+  .searchCard:nth-child(2),
+  .searchCard:nth-child(3) {
+    margin-top: 30px;
+  }
+
+  .searchFilter .search-bg div:nth-child(n+2):nth-last-child(n+2) {
+    margin-bottom: 20px;
+  }
+
+  #noteImageData-heading {
+    margin-top: 20px;
+  }
+
+  #noteImageData {
+    margin-bottom: 20px;
+  }
+
+  #noteImageData .row img {
+    width: 250px;
+  }
+
+  #noteImageData,
+  #notesDetailsHeading {
+    text-align: center;
+  }
+
+  #notesCustomers h3 {
+    margin-top: 20px;
+  }
+
+  #homeHowItWorks .row .offset-md-2:nth-child(1) {
+    margin-bottom: 30px;
+  }
+
+  #dashboard .container #dashboardHeading h1 {
+    text-align: center;
+  }
+
+  #dashboard .container #dashboardHeading .btn {
+    width: 100%;
+  }
+
+  #contactUsForm .btn {
+    margin-top: 30px;
+  }
+}

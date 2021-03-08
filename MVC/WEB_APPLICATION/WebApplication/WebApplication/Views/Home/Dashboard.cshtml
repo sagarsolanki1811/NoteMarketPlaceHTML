@@ -1,0 +1,226 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@{
+    Layout = "~/Views/Shared/H_F_1.cshtml";
+    ViewBag.Title = "dashboard";
+    int one = ViewBag.one;
+    double two = ViewBag.two;
+    int three = ViewBag.three;
+    int four = ViewBag.four;
+    int five = ViewBag.five;
+    //IEnumerable<WebApplication.Models.NoteDetail> progress_notes = ViewBag.ProgressList as IEnumerable<WebApplication.Models.NoteDetail>;
+    //IEnumerable<WebApplication.Models.NoteDetail> published_notes = ViewBag.PublishedList as IEnumerable<WebApplication.Models.NoteDetail>;
+
+    IPagedList<WebApplication.Models.NoteDetail> progress_notes = ViewBag.ProgressList as IPagedList<WebApplication.Models.NoteDetail>;
+    IPagedList<WebApplication.Models.NoteDetail> published_notes = ViewBag.PublishedList as IPagedList<WebApplication.Models.NoteDetail>;
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="container">
+        <div class="row searchBarSection">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 dashboard-heading">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-right">
+                @Html.ActionLink("ADD NOTE", "AddNotes", "Home", null, new { @class = "btn shadow-none" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7 col-md-12 col-sm-12 col-12 dashboardData">
+                <div class="dashboard-flex-content text-center">
+                    <img src="~/Content/Images/my-earning.png" alt="Earning">
+                    <h1>My Earning</h1>
+                </div>
+
+                <div class="dashboard-flex-content text-center">
+                    <h1>@Html.ActionLink(one.ToString(), "MySoldNotes", "Home")</h1>
+                    <h2>Numbers Of Sold</h2>
+                </div>
+
+                <div class="dashboard-flex-content text-center">
+                    <h1>@Html.ActionLink("Rs. " + two.ToString(), "MySoldNotes", "Home")</h1>
+                    <h2>Money Earned</h2>
+                </div>
+
+            </div>
+            <div class="col-lg-5 col-md-12 col-sm-12 col-12 dashboardData">
+                <div class="dashboard-flex-content text-center">
+                    <h1>@Html.ActionLink(three.ToString(), "MyDownload", "Home")</h1>
+                    <h2>My Downloads</h2>
+                </div>
+
+                <div class="dashboard-flex-content text-center">
+                    <h1>@Html.ActionLink(four.ToString(), "MyRejectedNotes", "Home")</h1>
+                    <h2>My Rejected Notes</h2>
+                </div>
+
+                <div class="dashboard-flex-content text-center">
+                    <h1>@Html.ActionLink(five.ToString(), "Buyer", "Home")</h1>
+                    <h2>Buyer Requests</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--In Progress notes-->
+    <div class="container">
+        <div class="row searchBarSection">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <h1>In Progress Notes</h1>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 input-group form-inline d-flex justify-content-center md-form form-sm mt-0">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">
+                        <img src="~/Content/Images/Dashboard/search.jpg" alt="search">
+                    </span>
+                </div>
+                <input type="text" class="form-control" aria-label="search" aria-describedby="addon-wrapping"
+                       placeholder="search" id="searchText">
+                <input type="button" class="btn shadow-none" value="SEARCH" onclick="location.href = '@Url.Action("Dashboard","Home")?search=' + $('#searchText').val()" />
+            </div>
+        </div>
+        <div class="table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm">
+            <table class="table progressTable text-center">
+                <thead>
+                    <tr>
+                        <th>@Html.ActionLink("ADDED DATE", "Dashboard", new { sortBy = ViewBag.sortByDate, search = Request.QueryString["search"], search1 = Request.QueryString["search1"] })</th>
+                        <th>@Html.ActionLink("TITLE", "Dashboard", new { sortBy = ViewBag.sortByTitle, search = Request.QueryString["search"], search1 = Request.QueryString["search1"] })</th>
+                        <th>@Html.ActionLink("CATEGORY", "Dashboard", new { sortBy = ViewBag.sortByCategory, search = Request.QueryString["search"], search1 = Request.QueryString["search1"] })</th>
+                        <th>@Html.ActionLink("STATUS", "Dashboard", new { sortBy = ViewBag.sortByStatus, search = Request.QueryString["search"], search1 = Request.QueryString["search1"] })</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (WebApplication.Models.NoteDetail element in progress_notes)
+                    {
+                        <tr>
+                            <td>@element.Created_Date</td>
+                            <td>@element.File_Name</td>
+                            <td>@element.Category</td>
+                            <td>@element.Status</td>
+
+                            @if (@element.Status == "Draft")
+                            {
+                                <td>
+                                    <a href="@Url.Action("AddNotes", "Home", new { id = element.note_id })" style="margin-right:15px;">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+
+                                    <i class="fas fa-trash" data-toggle="modal" data-target="#modalDelete"></i>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a href="@Url.Action("NoteDetails", "Home", new { id = element.note_id })" style="margin-right:15px;">
+                                        <i class="far fa-eye"></i>
+                                    </a>
+                                </td>
+                            }
+                        </tr>
+                        <!-- Modal when click on delete button under three dots -->
+                        <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&#10005;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-center"><b>Are you sure, you want to delete this note ?</b></p>
+                                        <div class="modal-confirmation">
+                                            @Html.ActionLink("Yes", "DeleteNotes", "Home", new { id=element.note_id}, new { @class = "btn shadow-none" })
+                                            <a class="btn shadow-none" data-dismiss="modal">
+                                                No
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </tbody>
+               
+            </table>
+        </div>
+    </div>
+    <!--Pagination Of Progress Notes-->
+    <div>
+        <ul class="pagination justify-content-center">
+            @Html.PagedListPager(progress_notes, page => Url.Action("Dashboard", new { page, search = Request.QueryString["search"], sortBy = Request.QueryString["sortBy"] }),
+           new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true }
+           )
+        </ul>
+    </div>
+
+    <!--published notes-->
+    <div class="container">
+        <div class="row searchBarSection">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <h1>Published Notes</h1>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 input-group form-inline d-flex justify-content-center md-form form-sm mt-0">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">
+                        <img src="~/Content/Images/Dashboard/search.jpg" alt="search">
+                    </span>
+                </div>
+                <input type="text" class="form-control" aria-label="search" aria-describedby="addon-wrapping"
+                       placeholder="search" id="searchText1">
+                <input type="button" class="btn shadow-none" value="SEARCH" onclick="location.href = '@Url.Action("Dashboard","Home")?search1=' + $('#searchText1').val()" />
+            </div>
+        </div>
+        <div class="table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm table-responsive">
+            <table class="table progressTable text-center">
+                <thead>
+                    <tr>
+                        <th>@Html.ActionLink("ADDED DATE", "Dashboard", new { sortBy1 = ViewBag.sortByDate1, search = Request.QueryString["search"], search1 = Request.QueryString["search1"] })</th>
+                        <th>@Html.ActionLink("TITLE", "Dashboard", new { sortBy1 = ViewBag.sortByTitle1, search = Request.QueryString["search"], search1 = Request.QueryString["search1"] })</th>
+                        <th>@Html.ActionLink("CATEGORY", "Dashboard", new { sortBy1 = ViewBag.sortByCategory1, search = Request.QueryString["search"], search1 = Request.QueryString["search1"] })</th>
+                        <th>@Html.ActionLink("SELL TYPE", "Dashboard", new { sortBy1 = ViewBag.sortBySellType, search = Request.QueryString["search"], search1 = Request.QueryString["search1"] })</th>
+                        <th>@Html.ActionLink("PRICE", "Dashboard", new { sortBy1 = ViewBag.sortByPrice, search = Request.QueryString["search"], search1 = Request.QueryString["search1"] })</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (WebApplication.Models.NoteDetail element in published_notes)
+                    {
+                        <tr>
+                            <td>@element.Created_Date</td>
+                            <td>@element.File_Name</td>
+                            <td>@element.Category</td>
+                            @if (@element.IsPaid == false)
+                            {
+                                <td>Free</td>
+                            }
+                            else
+                            {
+                                <td>Paid</td>
+                            }
+                            <td>Rs. @element.Sell_Price</td>
+                            <td>
+                                <a href="@Url.Action("NoteDetails", "Home", new { id = element.note_id })">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Pagination Of Published Notes-->
+    <div>
+        <ul class="pagination justify-content-center">
+            @Html.PagedListPager(published_notes, page => Url.Action("Dashboard", new { page, search1 = Request.QueryString["search1"], sortBy1 = Request.QueryString["sortBy1"] }),
+           new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true }
+           )
+        </ul>
+    </div>
+</body>
+</html>

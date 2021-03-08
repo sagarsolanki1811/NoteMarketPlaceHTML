@@ -1,0 +1,268 @@
+﻿@{
+    Layout = "~/Views/Shared/H_F_1.cshtml";
+    ViewBag.Title = "myDownload";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="container">
+        <div class="row searchBarSection">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <h1>My Downloads</h1>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 input-group form-inline d-flex justify-content-center md-form form-sm mt-0">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">
+                        <img src="~/Content/Images/Dashboard/search.jpg" alt="search">
+                    </span>
+                </div>
+                <input type="text" class="form-control" aria-label="search" aria-describedby="addon-wrapping"
+                       placeholder="search">
+                @Html.ActionLink("SEARCH", "Search", "OtherEvent", null, new { @class = "btn shadow-none" })
+            </div>
+        </div>
+        <div class="table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm">
+            <table class="table progressTable text-center">
+                <thead>
+                    <tr>
+                        <th>SR NO.</th>
+                        <th>NOTE TITLE</th>
+                        <th>CATEGORY</th>
+                        <th>SELLER</th>
+                        <th>SELL TYPE</th>
+                        <th>PRICE</th>
+                        <th>DOWNLOAD DATE/TIME</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>test@gamil.com</td>
+                        <td>Paid</td>
+                        <td>$575</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td class="dropdown">
+                            <i class="far fa-eye"></i>
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item shadow-none" type="button">Download Note</button>
+                                <button class="dropdown-item shadow-none" type="button" data-toggle="modal"
+                                        data-target="#modalMyDownload">
+                                    Add
+                                    Reviews/Feedback
+                                </button>
+                                <button class="dropdown-item shadow-none" type="button" data-toggle="modal"
+                                        data-target="#modalReport">
+                                    Report as
+                                    Inappropriate
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>test@gamil.com</td>
+                        <td>Paid</td>
+                        <td>$575</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td class="dropdown">
+                            <i class="far fa-eye"></i>
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item shadow-none" type="button">Download Note</button>
+                                <button class="dropdown-item shadow-none" type="button" data-toggle="modal"
+                                        data-target="#modalMyDownload">
+                                    Add
+                                    Reviews/Feedback
+                                </button>
+                                <button class="dropdown-item shadow-none" type="button">
+                                    Report as
+                                    Inappropriate
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>test@gamil.com</td>
+                        <td>Paid</td>
+                        <td>$575</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td class="dropdown">
+                            <i class="far fa-eye"></i>
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item shadow-none" type="button">Download Note</button>
+                                <button class="dropdown-item shadow-none" type="button" data-toggle="modal"
+                                        data-target="#modalMyDownload">
+                                    Add
+                                    Reviews/Feedback
+                                </button>
+                                <button class="dropdown-item shadow-none" type="button">
+                                    Report as
+                                    Inappropriate
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>test@gamil.com</td>
+                        <td>Paid</td>
+                        <td>$575</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td class="dropdown">
+                            <a href="@Url.Action("Show", "OtherEvent")">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                @Html.ActionLink("Download Note", "DownloadNote", "OtherEvent", null, new { @class = "dropdown-item shadow-none" })
+                                <button class="dropdown-item shadow-none" type="button" data-toggle="modal"
+                                        data-target="#modalMyDownload">
+                                    Add Reviews/Feedback
+                                </button>
+                                <button class="dropdown-item shadow-none" type="button" data-toggle="modal"
+                                        data-target="#modalReport">
+                                    Report as Inappropriate
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal when click on add review button in 3 dots -->
+    <div class="modal fade" id="modalMyDownload" tabindex="-1" role="dialog" aria-labelledby="modalMyDownloadTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&#10005;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="modal-title" id="modalMyDownloadTitle">Add Review</h5>
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text"></label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text"></label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text"></label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text"></label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text"></label>
+                    </div>
+
+                    <div>
+                        <label for="comments">Comments *</label>
+                        <textarea name="textarea" class="form-control" id="comments" rows="5"
+                                  placeholder="comments..." style="width: 100%;"></textarea>
+                    </div>
+                    <div class="addReview-popup">
+                        @Html.ActionLink("SUBMIT", "SubmitReview", "OtherEvent", null, new { @class = "btn shadow-none" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal when click on report as inappropriate button in 3 dots -->
+    <div class="modal fade" id="modalReport" tabindex="-1" role="dialog" aria-labelledby="modalMyDownloadTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&#10005;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="modal-title" id="modalMyDownloadTitle">Human Body</h3>
+                    <div>
+                        <label for="remarks">Remarks *</label>
+                        <textarea name="textarea" class="form-control" id="remarks" rows="5"
+                                  placeholder="Add Remark Here" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="modal-confirmation spamModal">
+                        <a class="btn shadow-none" data-toggle="modal" data-target="#modalReportConfirmation">
+                            Report an Issue
+                        </a>
+                        <a class="btn shadow-none" data-dismiss="modal">
+                            Cancel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal when click on report an issue in modal -->
+    <div class="modal fade" id="modalReportConfirmation" tabindex="-1" role="dialog"
+         aria-labelledby="modalMyDownloadTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&#10005;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">
+                        <b>
+                            “Are you sure you want to mark this report as spam, you cannot update
+                            it later? ”
+                        </b>
+                    </p>
+                    <div class="modal-confirmation spamModal">
+                        @Html.ActionLink("Yes", "Spam", "OtherEvent", null, new { @class = "btn shadow-none" })
+                        <a class="btn shadow-none" data-dismiss="modal">
+                            No
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                    <i class="fa fa-angle-left"
+                       aria-hidden="true"></i>
+                </a>
+            </li>
+            <li><a class="page-link page-link1" href="#">1</a></li>
+            <li><a class="page-link" href="#">2</a></li>
+            <li><a class="page-link" href="#">3</a></li>
+            <li><a class="page-link" href="#">4</a></li>
+            <li><a class="page-link" href="#">5</a></li>
+            <li>
+                <a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

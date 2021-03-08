@@ -1,0 +1,321 @@
+﻿@model WebApplication.Models.NoteDetail
+
+@{
+    Layout = "~/Views/Shared/H_F_1.cshtml";
+    ViewBag.Title = "addNotes";
+    IEnumerable<WebApplication.Models.Country> countries = TempData["CountriesList"] as IEnumerable<WebApplication.Models.Country>;
+    IEnumerable<WebApplication.Models.Category> categories = TempData["CategoriesList"] as IEnumerable<WebApplication.Models.Category>;
+    IEnumerable<WebApplication.Models.NoteType> types = TempData["TypesList"] as IEnumerable<WebApplication.Models.NoteType>;
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="photo-text">
+        <img src="~/Content/Images/Add_Notes/banner-with-overlay.jpg" alt="user-photo" style="width:100%;height:250px">
+        <h1>Add Notes</h1>
+    </div>
+
+
+    @using (Html.BeginForm("AddNotes", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="container">
+            <p class="text-center text-success"><b>@ViewData["AddNoteOnSave"]</b></p>
+            <div class="form-heading">
+                <h1>Basic Note Details</h1>
+            </div>
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-12 form-row">
+                    @Html.LabelFor(m => m.File_Name)
+                    @Html.EditorFor(model => model.File_Name, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your notes title" } })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.File_Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-12 form-row">
+                    @Html.LabelFor(m => m.Category)
+                    <select name="Category" class="form-control" id="DropDownCategory">
+                        <option value="" selected="selected" disabled>select your category</option>
+                        @foreach (WebApplication.Models.Category element in categories)
+                        {
+                            <option value="@element.Name">
+                                @element.Name
+                            </option>
+                        }
+                    </select>
+                    @if (Model != null)
+                    {
+                        <script>
+                            $("#DropDownCategory").val("@Model.Category");
+                        </script>
+                    }
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-12 row form-row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        @Html.LabelFor(m => m.Display_Picture)
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-12 text-center"
+                         style="border: 1px solid #ced4da; border-radius: 3px;">
+                        <input type="file" id="DP" name="Display_Pic" style="display: none;">
+                        <label for="DP" class="fileupload">
+                            <img src="~/Content/Images/Assets/upload.png" alt="upload-photo">
+                            <span style="margin-bottom:0;display:block">Upload A Picture</span>
+                            <span id="DP_Name" style="color:#6255a5"></span>
+                        </label>
+                    </div>
+                    <script>
+                        $("#DP").change(function (e) {
+                            var fileName = e.target.files[0].name;
+                            document.getElementById("DP_Name").textContent = 'Chosen File: ' + fileName;
+                        });
+                    </script>
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Display_Picture, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-12 row form-row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        @Html.LabelFor(m => m.File_Path)
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-12 text-center"
+                         style="border: 1px solid #ced4da; border-radius: 3px;">
+                        <input type="file" id="uploadNote" name="Up_Note" style="display: none;" accept=".pdf">
+                        <label for="uploadNote" class="fileupload">
+                            <img src="~/Content/Images/Assets/upload.png" alt="upload-note">
+                            <span style="margin-bottom:0;display:block">Upload Notes</span>
+                            <span id="Note_Name" style="color:#6255a5"></span>
+                        </label>
+                    </div>
+                    <script>
+                        $("#uploadNote").change(function (e) {
+                            var fileName = e.target.files[0].name;
+                            document.getElementById("Note_Name").textContent = 'Chosen File: ' + fileName;
+                        });
+                    </script>
+                    @if (Model != null)
+                    {
+                        <script>
+                            $("#Note_Name").textContent = "Model.File_Name";
+                        </script>
+                    }
+                    <div>
+                        @Html.ValidationMessageFor(m => m.File_Path, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-12 form-row">
+                    @Html.LabelFor(m => m.Type)
+                    <select name="Type" class="form-control" id="DropDownType">
+                        <option value="" selected="selected" disabled>select your note type</option>
+                        @foreach (WebApplication.Models.NoteType element in types)
+                        {
+                            <option value=" @element.Name">
+                                @element.Name
+                            </option>
+                        }
+                    </select>
+                    @if (Model != null)
+                    {
+                        <script>
+                            $("#DropDownType").val("@Model.Type");
+                        </script>
+                    }
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-12 form-row">
+                    @Html.LabelFor(m => m.No_Of_Pages)
+                    @Html.EditorFor(model => model.No_Of_Pages, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter number of pages" } })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.No_Of_Pages, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-12 row form-row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(m => m.Description)
+                    </div>
+                    <div class="col-md-12">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control shadow-none TextAreAddNotes", placeholder = "Enter your description", @rows = 5 })
+                    </div>
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <!--Institute Information-->
+            <div class="form-heading">
+                <h1>Instituion Information</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-12 form-row">
+                    @Html.LabelFor(m => m.Country)
+                    <select name="Country" class="form-control" id="DropDownCountry">
+                        <option value="" selected="selected" disabled>select your country</option>
+                        @foreach (WebApplication.Models.Country element in countries)
+                        {
+                            <option value="@element.Name">
+                                @element.Name
+                            </option>
+                        }
+                    </select>
+                    @if (Model != null)
+                    {
+                        <script>
+                            $("#DropDownCountry").val("@Model.Country");
+                        </script>
+                    }
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-12 form-row">
+                    @Html.LabelFor(m => m.Institute_Name)
+                    @Html.EditorFor(model => model.Institute_Name, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your instituion name" } })
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(m => m.Institute_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <!--Course Information-->
+            <div class="form-heading">
+                <h1>Course Details</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-12 form-row">
+                    @Html.LabelFor(m => m.Course_Name)
+                    @Html.EditorFor(model => model.Course_Name, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your course name" } })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Course_Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-12 form-row">
+                    @Html.LabelFor(m => m.Course_Code)
+                    @Html.EditorFor(model => model.Course_Code, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your course code" } })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Course_Code, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-12 form-row">
+                    @Html.LabelFor(m => m.Professor)
+                    @Html.EditorFor(model => model.Professor, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your professor name" } })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Professor, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <!--Institute Information-->
+            <div class="form-heading">
+                <h1>Selling Information</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <!--<label for="sellType" style="margin-left: -5px;">Sell For *</label>-->
+                            @Html.LabelFor(m => m.IsPaid)
+                        </div>
+                    </div>
+                    <div class="form-check-inline radio-content">
+                        <div class="radio-item">
+                            <!--<input class="form-check-input" type="radio" id="free" name="radioButton" value="free">-->
+                            @Html.RadioButtonFor(m => m.IsPaid, "Free", new { @class = "form-check-input", id = "Free" })
+                        </div>
+                        <!--<label class="form-check-label" for="free">Free</label>-->
+                        @Html.LabelFor(m => m.Free, new { @class = "form-check-label" })
+                        <div class="radio-item">
+                            <!--<input class="form-check-input" type="radio" id="paid" name="radioButton" value="paid">-->
+                            @Html.RadioButtonFor(m => m.IsPaid, "Paid", new { @class = "form-check-input", id = "Paid" })
+                        </div>
+                        <!--<label class="form-check-label" for="paid">Paid</label>-->
+                        @Html.LabelFor(m => m.Paid, new { @class = "form-check-label" })
+                    </div>
+                    <div>
+                        @Html.ValidationMessageFor(m => m.IsPaid, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="row" id="toggleDiv" style="display: none;">
+                        <div class="col-md-12 form-row">
+                            @Html.LabelFor(m => m.Sell_Price)
+                            @Html.EditorFor(model => model.Sell_Price, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your price", id = "sp_id" } })
+                        </div>
+                        <div>
+                            @Html.ValidationMessageFor(m => m.Sell_Price, "", new { @class = "text-danger" })
+                        </div>
+                        @if (Model != null)
+                        {
+                            <script>
+                                $("#sp_id").val("@Model.Sell_Price");
+                            </script>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(m => m.Note_Preview)
+                    <div class="col-md-12 col-sm-12 col-12 text-center"
+                         style="border: 1px solid #ced4da; border-radius: 3px;">
+                        <input type="file" id="uploadPreview" name="Up_Preview" style="display: none;" accept=".pdf">
+                        <label for="uploadPreview" style="height: 105px;" class="fileupload">
+                            <img src="~/Content/Images/Assets/upload.png" alt="upload-note">
+                            <span style="margin-bottom:0;display:block">Upload A File</span>
+                            <span id="Preview_Name" style="color:#6255a5"></span>
+                        </label>
+                    </div>
+                    <script>
+                        $("#uploadPreview").change(function (e) {
+                            var fileName = e.target.files[0].name;
+                            document.getElementById("Preview_Name").textContent = 'Chosen File: ' + fileName;
+                        });               
+                    </script>
+                    @Html.ValidationMessage("PreviewNeeded", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <button type="submit" class="btn shadow-none">SAVE</button>
+                    @Html.ActionLink("PUBLISH", "", "", null, new { @class = "btn shadow-none", data_toggle = "modal", data_target = "#modalPublishNote" })
+                </div>
+            </div>
+            <!-- Modal when click publish note -->
+            <div class="modal fade" id="modalPublishNote" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&#10005;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-center">
+                                <b>
+                                    “ Publishing this note will send note to administrator
+                                    for review, once
+                                    administrator review and approve then this note will be published to
+                                    portal. Press yes to continue. ”
+                                </b>
+                            </p>
+                            <div class="modal-confirmation">
+                                @Html.ActionLink("Yes", "PublishReq", "Home", null, new { @class = "btn shadow-none" })
+                                <a class="btn shadow-none" data-dismiss="modal">
+                                    Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</body>
+</html>
+

@@ -1,0 +1,200 @@
+﻿@model WebApplication.Models.User
+
+
+    @{
+        Layout = "~/Views/Shared/H_F_1.cshtml";
+        ViewBag.Title = "userProfile";
+        IEnumerable < WebApplication.Models.Country> countries = TempData["CountriesList"] as IEnumerable<WebApplication.Models.Country>;
+    }
+
+
+    <!DOCTYPE html>
+    <html>
+    <body>
+        <div class="photo-text">
+            <img src="~/Content/Images/User_Profile/banner-with-overlay.jpg" alt="user-photo" style="width:100%;height:250px">
+            <h1>User Profile</h1>
+        </div>
+
+        @using (Html.BeginForm("MyProfile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="container">
+                <div class="form-heading">
+                    <h1>Basic Profile Details</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.Fname)
+                        @Html.EditorFor(m => m.Fname, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your first name" } })
+                        <div>
+                            @Html.ValidationMessageFor(m => m.Fname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.Lname)
+                        @Html.EditorFor(m => m.Lname, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your last name" } })
+                        <div>
+                            @Html.ValidationMessageFor(m => m.Lname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your email address", @readonly = "readonly" } })
+                        <div>
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.DOB)
+                        @Html.EditorFor(m => m.DOB, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "02/02/2000" } })
+                        @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.Gender)
+                        @Html.DropDownListFor(m => m.Gender, new List<SelectListItem> {
+                            new SelectListItem {
+                                Text = "Male", Value = "Male"
+                            },
+                            new SelectListItem {
+                                Text = "Female", Value = "Female"
+                            },
+                            new SelectListItem {
+                                Text = "Other", Value = "Other"
+                            },
+                        }, "Select Your Gender", new { @class = "form-control" })
+
+
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-6 form-row">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                @Html.LabelFor(m => m.Phone_Number)
+                            </div>
+                            <div class="col-lg-5 col-5 col-sm-5 col-md-5">
+
+                                <select name="Phone_Number_Country_Code" class="form-control">
+                                    <option disabled="" selected="">select your country</option>
+                                    @foreach (WebApplication.Models.Country element in countries)
+                                    {
+                                        <option value=" @element.Country_Code">
+                                            @element.Country_Code
+                                        </option>
+                                    }
+                                </select>
+
+                                <div>
+                                    @Html.ValidationMessageFor(m => m.Phone_Number_Country_Code, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                            <div class="col-lg-7 col-7 col-sm-7 col-md-7 col-xl-7">
+                                @Html.EditorFor(m => m.Phone_Number, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your phone number" } })
+
+                                <div>
+                                    @Html.ValidationMessageFor(m => m.Phone_Number, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-12 row form-row">
+                        <div class="col-md-12 col-sm-12 col-12">
+                            @Html.LabelFor(m => m.Profile_Picture)
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-12 text-center"
+                             style="border: 1px solid #ced4da; border-radius: 3px;">
+                            <input type="file" id="upload" name="Dummy" style="display: none;">
+                            <label for="upload" class="fileupload">
+                                <img src="~/Content/Images/Assets/upload.png" alt="upload-note">
+                                <span style="margin-bottom:0;display:block">Upload A Picture</span>
+                            </label>
+
+                            <!--     <input type="file" name="Dummy" />  -->
+
+                        </div>
+                        <div>
+                            @Html.ValidationMessageFor(m => m.Profile_Picture, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container">
+                <div class="form-heading">
+                    <h1>Address Details</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.Address_1)
+                        @Html.EditorFor(m => m.Address_1, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your address" } })
+                        <div>
+                            @Html.ValidationMessageFor(m => m.Address_1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.Address_2)
+                        @Html.EditorFor(m => m.Address_2, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your address" } })
+                        <div>
+                            @Html.ValidationMessageFor(m => m.Address_2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.City)
+                        @Html.EditorFor(m => m.City, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your city" } })
+                        <div>
+                            @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.State)
+                        @Html.EditorFor(m => m.State, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your state" } })
+                        <div>
+                            @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.ZipCode)
+                        @Html.EditorFor(m => m.ZipCode, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your zipcode" } })
+                        <div>
+                            @Html.ValidationMessageFor(m => m.ZipCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.Country)
+                        @Html.EditorFor(m => m.Country, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your country" } })
+                        <div>
+                            @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container">
+                <div class="form-heading">
+                    <h1>University and College Information</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.University)
+                        @Html.EditorFor(m => m.University, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your university" } })
+                        <div>
+                            @Html.ValidationMessageFor(m => m.University, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12 form-row">
+                        @Html.LabelFor(m => m.College)
+                        @Html.EditorFor(m => m.College, new { htmlAttributes = new { @class = "form-control shadow-none", placeholder = "Enter your college" } })
+                        <div>
+                            @Html.ValidationMessageFor(m => m.College, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <button type="submit" class="btn shadow-none">SUBMIT</button>
+                </div>
+            </div>
+        }
+
+    </body>
+</html>

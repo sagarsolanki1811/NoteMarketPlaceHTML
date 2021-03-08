@@ -1,0 +1,140 @@
+﻿@{
+    Layout = "~/Views/Shared/H_F_Home.cshtml";
+    ViewBag.Title = "homePage";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <!--market place-->
+    <div class="container" id="homeAboutMarketPlace">
+        <div class="row">
+            <div class="col-md-4 col-sm-12 col-12">
+                <h1>About MarketPlace</h1>
+            </div>
+            <div class="col-md-8 col-sm-12 col-12">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non placeat
+                    sed
+                    quos earum. Totam unde
+                    obcaecati et, maxime error, perferendis fuga voluptatem non distinctio hic necessitatibus
+                    numquam
+                    excepturi vero rerum!
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non placeat sed quos earum. Totam unde
+                    obcaecati et, maxime error, perferendis fuga voluptatem non distinctio hic necessitatibus
+                    numquam
+                    excepturi vero rerum!
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--selll and download books-->
+    <div class="container-fluid" id="homeHowItWorks">
+        <div class="row mx-auto">
+            <div class="col-md-12 text-center">
+                <h1>How it Works</h1>
+            </div>
+            <div class="col-md-4 offset-md-2 text-center">
+                <div class="imgPair d-flex align-items-center justify-content-center mx-auto">
+                    <img src="~/Content/Images/Home_Page/download.png" class="img-fluid" alt="download" style="width:50px;height:50px">
+                </div>
+                <h1>Download Free/Paid Notes</h1>
+                <p>Get Material For Your <br>Course etc.</p>
+                @Html.ActionLink("DOWNLOAD", "Search", "Home", null, new { @class = "btn shadow-none" })
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="imgPair d-flex align-items-center justify-content-center mx-auto">
+                    <img src="~/Content/Images/Home_Page/download.png" class="img-fluid text-center" alt="download" style="width:50px;height:50px">
+                </div>
+                <h1>Seller</h1>
+                <p>Upload And Download Course <br>and Material etc.</p>
+                @Html.ActionLink("SELL BOOK", "Dashboard", "Home", null, new { @class = "btn shadow-none" })
+            </div>
+        </div>
+    </div>
+    <!--customers reviews-->
+    <div class="container" id="homeCustomers">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div id="heading">
+                    <h1>What Our Customers Are Saying</h1>
+                </div>
+            </div>
+            <!--customer 1-->
+            <div class="col-md-6 col-12 col-12 row customers">
+                <div class="col-md-3 col-sm-3 col-3 customers-icon">
+                    <img src="~/Content/Images/Home_Page/team-1.jpg" alt="team-1" style="width:100px;height:100px"
+                         class="rounded-circle img-fluid">
+                </div>
+                <div class="col-md-9 col-sm-9 col-9 customers-name">
+                    <h1>Walter Meller</h1>
+                    <h2>Founder & CEO, MAtrix Group</h2>
+                </div>
+                <div class="col-md-12 col-sm-12 col-12">
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A est ullam sunt quis, rerum optio,
+                        debitis totam corporis nemo deserunt veniam ad laudantium neque libero adipisci! Odio soluta
+                        veritatis nemo.
+                    </p>
+                </div>
+            </div>
+            <!--customer 2-->
+            <div class="col-md-6 col-12 col-12 row customers">
+                <div class="col-md-3 col-sm-3 col-3 customers-icon">
+                    <img src="~/Content/Images/Home_Page/team-2.jpg" alt="team-2" style="width:100px;height:100px"
+                         class="rounded-circle img-fluid">
+                </div>
+                <div class="col-md-9 col-sm-9 col-9 customers-name">
+                    <h1>Jonnie Riley</h1>
+                    <h2>Employee,Curious Snakes</h2>
+                </div>
+                <div class="col-md-12 col-sm-12 col-12">
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A est ullam sunt quis, rerum optio,
+                        debitis totam corporis nemo deserunt veniam ad laudantium neque libero adipisci! Odio soluta
+                        veritatis nemo.
+                    </p>
+                </div>
+            </div>
+            <!--customer 3-->
+            <div class="col-md-6 col-12 col-12 row customers">
+                <div class="col-md-3 col-sm-3 col-3 customers-icon">
+                    <img src="~/Content/Images/Home_Page/team-3.jpg" alt="team-3" style="width:100px;height:100px"
+                         class="rounded-circle img-fluid">
+                </div>
+                <div class="col-md-9 col-sm-9 col-9 customers-name">
+                    <h1>Amilia Luna</h1>
+                    <h2>Teacher,Saint Joseph High School</h2>
+                </div>
+                <div class="col-md-12 col-sm-12 col-12">
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A est ullam sunt quis, rerum optio,
+                        debitis totam corporis nemo deserunt veniam ad laudantium neque libero adipisci! Odio soluta
+                        veritatis nemo.
+                    </p>
+                </div>
+            </div>
+            <!--customer 4-->
+            <div class="col-md-6 col-12 col-12 row customers customers-icon">
+                <div class="col-md-3 col-sm-3 col-3">
+                    <img src="~/Content/Images/Home_Page/team-4.jpg" alt="team-4" style="width:100px;height:100px"
+                         class="rounded-circle img-fluid">
+                </div>
+                <div class="col-md-9 col-sm-9 col-9 customers-name">
+                    <h1>Daniel Cardos</h1>
+                    <h2>Software Engineer,Infinitum Company</h2>
+                </div>
+                <div class="col-md-12 col-sm-12 col-12">
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A est ullam sunt quis, rerum optio,
+                        debitis totam corporis nemo deserunt veniam ad laudantium neque libero adipisci! Odio soluta
+                        veritatis nemo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

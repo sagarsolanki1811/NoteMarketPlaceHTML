@@ -1,0 +1,1231 @@
+/*general CSS start*/
+body,
+html {
+    height: 100%;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+#login,
+#forgotPassword,
+#changePassword,
+#emailVerification {
+    background-image:url("../../Images/Pre_Login/banner-with-overlay.jpg");
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#signup {
+    background-image: url("../../Images/Pre_Login/banner-with-overlay.jpg");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding-bottom: 100px;
+}
+
+#login,
+#forgotPassword,
+#changePassword,
+#signup,
+#emailVerification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-form-box,
+#forgotPassword-form-box,
+#changePassword-form-box,
+#signup-form-box,
+#emailVerification-form-box {
+    width: 580px;
+}
+
+.fileupload{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+.RowText {
+    margin-top: 20px;
+}
+
+.photo-text {
+    position: relative;
+}
+
+.photo-text h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 52px;
+    color: white;
+}
+
+.form {
+    padding: 50px;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.form-logo {
+    margin-bottom: 25px;
+    padding-top: 25px;
+}
+
+.form-heading h1 {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 20px;
+}
+
+.form-heading h2 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #333333;
+    margin-bottom: 45px;
+}
+
+#userProfile .form-heading,
+#addNotes .form-heading,
+#FAQ .form-heading,
+#contactUs .form-heading {
+    margin-bottom: 40px;
+    margin-left: -10px;
+}
+
+.form .form-label {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333;
+}
+
+.form .form-control {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #000000;
+    height: 50px;
+    border: 1px solid #6255a5;
+    border-radius: 3px;
+}
+
+.form .form-control:focus {
+    box-shadow: none;
+    border: 1px solid #6255a5;
+}
+
+.bottom-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333;
+    margin-top: 20px;
+}
+
+.bottom-text span a {
+    color: #6255a5;
+    text-decoration: none;
+}
+
+.bottom-text span a:hover {
+    color: #333333;
+}
+
+.form-row,
+.searchBarSection {
+    margin-bottom: 30px;
+}
+
+.form-row label {
+    line-height: 20px;
+    color: #333333;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    box-shadow: none;
+    border: 1px solid #6255a5;
+}
+
+.form-row textarea:focus,
+#contactUs textarea:focus,
+.modal-body textarea:focus {
+    box-shadow: none;
+    border: 1px solid #6255a5;
+}
+
+.was-validated .form-control:invalid {
+    border: 1px solid #ff5e5e !important;
+}
+
+.invalid-feedback {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #ff3636;
+    margin-top: 10px;
+}
+
+
+.form-check-label {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333 !important;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.form-check-input {
+    width: 30px;
+    height: 30px;
+}
+
+.form-check {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    padding-top: 60px;
+}
+
+.navbar .container{
+    margin-top: -60px;
+}
+
+.container-fluid {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.searchBarSection h1 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+}
+
+.searchBarSection span {
+    background-color: #fff;
+}
+
+.searchBarSection .form-control:focus {
+    box-shadow: none;
+    border: 1px solid #6255a5;
+}
+
+#login .btn:hover,
+#forgotPassword .btn:hover,
+#changePassword .btn:hover,
+#signup .btn:hover,
+#emailVerification .btn:hover,
+#userProfile .btn:hover,
+#homePage .btn:hover,
+#homeHowItWorks .row .btn:hover,
+#noteDetail .btn:hover,
+#dashboard .btn:hover,
+#dashboard nav #navbarCollapse .btn:hover,
+#dashboard .container .searchBarSection .btn:hover,
+#addNotes nav #navbarCollapse .btn:hover,
+#addNotes form .container .row .btn:hover,
+#search .btn:hover,
+#myDownload .btn:hover,
+#mySoldNotes .btn:hover,
+#myRejectedNotes .btn:hover,
+#buyerRequests .btn:hover,
+#contactUs .btn:hover,
+#FAQ .btn:hover {
+    background-color: #473e78;
+}
+
+#login .btn,
+#forgotPassword .btn,
+#changePassword .btn,
+#signup .btn,
+#userProfile .btn,
+#emailVerification .btn,
+#homePage .btn,
+#homeHowItWorks .row .btn,
+#noteDetail .btn,
+#dashboard .btn,
+#dashboard nav #navbarCollapse .btn,
+#dashboard .container .searchBarSection .btn,
+#addNotes nav #navbarCollapse .btn,
+#addNotes form .container .row .btn,
+#search .btn,
+#myDownload .btn,
+#mySoldNotes .btn,
+#myRejectedNotes .btn,
+#buyerRequests .btn,
+#contactUs .btn,
+#FAQ .btn,
+.navbar-nav li .btn {
+    width: 100%;
+    background-color: #6255a5;
+    color: white;
+    border: 1px solid #6255a5 !important;
+    line-height: 22px;
+    font-size: 18px;
+    border-radius: 3px;
+    height: 35px;
+}
+
+#dashboard .container .searchBarSection .btn,
+#myDownload .container .searchBarSection .btn,
+#mySoldNotes .container .searchBarSection .btn,
+#myRejectedNotes .container .searchBarSection .btn,
+#buyerRequests .container .searchBarSection .btn,
+#userProfile .container form .btn {
+    width:fit-content;
+    height: 38px;
+    margin-left: 10px;
+}
+
+#homeHowItWorks .row .btn,
+#contactUs form .btn,
+#addNotes form .container .row .btn {
+    width: fit-content;
+}
+
+.login-forgot-password-link {
+    color: #6255a5;
+    text-decoration: none;
+    float: right;
+}
+
+.login-forgot-password-link:hover {
+    color: #333333;
+}
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+/*general CSS end*/
+
+
+
+/*table CSS start*/
+table th {
+    font-weight: 600;
+    color: #6255a5;
+}
+
+.table thead tr th a {
+    font-weight: 600;
+    color: #6255a5;
+}
+
+.table thead tr th a:hover {
+    font-weight: 600;
+    color: #473e78;
+}
+
+
+table td {
+    white-space: nowrap;
+}
+
+table th {
+    vertical-align: middle !important;
+}
+
+table td i {
+    color: #000000;
+}
+
+table td a i {
+    color: #000000;
+}
+
+table td i:hover {
+    color: #333333;
+    cursor: pointer;
+}
+
+#myDownload table tr i:nth-child(1) {
+    margin-right: 10px;
+}
+
+.progressTable {
+    border: 1px solid #d1d1d1;
+    border-radius: 3px;
+}
+
+.progressTable thead {
+    font-size: 16px;
+    line-height: 20px;
+    color: #333333;
+}
+
+.progressTable tbody tr {
+    line-height: 50px;
+}
+
+.progressTable tbody tr:hover {
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+/*table CSS end*/
+
+
+
+/*navbar CSS start*/
+nav .navbar-nav .nav-item .nav-link {
+    font-size: 16px;
+    line-height: 22px;
+    color: #333333;
+    font-weight: 600;
+}
+
+nav .navbar-nav .nav-item .nav-link:hover {
+    color: black;
+}
+
+nav {
+    -webkit-box-shadow: 0 8px 6px -9px #999;
+    box-shadow: 0 8px 6px -9px #999;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+}
+
+nav .dropdown-menu .dropdown-item:hover {
+    background-color: #6255a5;
+    color: white;
+}
+
+/*navbar CSS end*/
+
+
+
+/*home navbar CSS start*/
+.white-nav-top .navbar-nav .nav-item .btn,
+.white-nav-top .navbar-nav .nav-item .btn:hover {
+    color: white !important;
+}
+
+#homePage nav {
+    box-shadow: none;
+}
+
+.white-nav-top {
+    background-color: white;
+    -webkit-box-shadow: 0 8px 6px -9px #999 !important;
+    box-shadow: 0 8px 6px -9px #999 !important;
+    z-index: 2;
+}
+
+.white-nav-top .navbar-nav .nav-item .nav-link {
+    color: #333333 !important;
+}
+
+.white-nav-top .navbar-nav .nav-item .nav-link:hover {
+    color: black !important;
+}
+
+.white-nav-top .navbar-nav .nav-item .btn,
+.white-nav-top .navbar-nav .nav-item .btn:hover {
+    color: white !important;
+}
+
+/*home navbar CSS end*/
+
+
+
+/*Home page CSS start*/
+#HomePagePhoto {
+    position: relative;
+    background-image: url("../../Images/Home_Page/banner-with-overlay.jpg");
+    height: 620px;
+}
+
+#HomePagePhoto nav li a {
+    color: white;
+}
+
+#HomePagePhoto nav li a:hover {
+    color: #eee;
+}
+
+.home-photo-content {
+    position: absolute;
+    top: 60%;
+    left: 20%;
+    transform: translateX(-20%) translateY(-60%);
+}
+
+.home-photo-content h2 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 54px;
+    color: white;
+}
+
+.home-photo-content p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    color: white;
+}
+
+#homePage .home-photo-content .btn {
+    width: 172px;
+    height: 40px;
+    background-color: transparent;
+    border-color: white !important;
+    font-weight: 600;
+}
+
+#homePage .home-photo-content .btn:hover {
+    background-color: white;
+    color: #6255a5;
+}
+
+#homeAboutMarketPlace h1,
+#homeHowItWorks .row div h1:nth-child(1),
+#homeCustomers h1 {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+}
+
+#homeAboutMarketPlace .row p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+}
+
+#homeAboutMarketPlace .row p:nth-child(1) {
+    margin-bottom: 50px;
+}
+
+#homeAboutMarketPlace,
+#homeCustomers #heading {
+    margin-bottom: 60px;
+}
+
+#homeHowItWorks {
+    background-color: #F9F9F9;
+}
+
+#homeHowItWorks .row .imgPair {
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.8);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+}
+
+#homeHowItWorks .row h1 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    margin-bottom: 20px;
+}
+
+#homeHowItWorks .row p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+#homeCustomers .customers h1 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    color: #6255a5;
+    margin-bottom: 15px;
+}
+
+#homeCustomers .customers h2 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #333333;
+    margin-bottom: 30px;
+}
+
+.customers {
+    border-radius: 3px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+}
+
+.customers:nth-child(odd) {
+    margin-bottom: 30px;
+}
+
+.customers:nth-child(even) {
+    margin-right: 45px;
+    margin-bottom: 30px;
+}
+
+.customers .customers-icon {
+    padding-right: 20px;
+}
+
+.customers .customers-name {
+    padding-left: 0;
+}
+
+/*Home page CSS end*/
+
+
+
+
+/*emailVerification CSS start*/
+.verification-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #333333;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.verification-content p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333;
+}
+
+.verification-content p:nth-child(3) {
+    margin-bottom: 30px;
+}
+
+/*emailVerification CSS end*/
+
+
+
+/*searchPage CSS start*/
+.searchFilter .row h1,
+#searchTotalNotes-heading h1 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    margin-bottom: 20px;
+}
+
+.searchFilter .search-bg {
+    padding: 30px;
+    background-color: #f9f9f9;
+}
+
+.searchFilter .search-bg div:nth-child(1) {
+    margin-bottom: 20px;
+}
+
+.searchFilter .search-bg select {
+    text-overflow: ellipsis;
+}
+
+.searchFilter .search-bg div:nth-child(1) .form-control:focus {
+    box-shadow: none;
+    border: 1px solid #6255a5;
+}
+
+.searchFilter .search-bg .form-control:focus {
+    box-shadow: none;
+    border: 1px solid #6255a5;
+}
+
+.searchFilter .search-bg .form-control,
+.searchFilter .search-bg div:nth-child(1) .form-control {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+}
+
+.searchCard:nth-child(n+4) {
+    margin-top: 30px;
+}
+
+.searchHeading a {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    color: #6255a5 !important;
+}
+
+.searchContent {
+    border: 1px solid #d1d1d1;
+    padding: 30px;
+}
+
+.search-row-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.search-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.search-row:not(.star-group) img {
+    height: 24px;
+    width: 25px;
+    margin-right: 20px;
+}
+
+.star-group img {
+    margin-right: 10px;
+    height: 24px;
+}
+
+.search-row-content .search-row:nth-child(4) {
+    color: #df3434;
+}
+
+/*searchPage CSS end*/
+
+
+
+
+
+
+/*noteDetail CSS start*/
+.note-row-content {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #333333;
+}
+
+.note-row-content span {
+    font-weight: 600;
+    color: #6255a5;
+}
+
+.note-row-content img {
+    height: 20px;
+}
+
+.note-row-content {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.note-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-content: flex-start;
+    line-height: 2;
+}
+
+.note-row-red {
+    color: #df3434;
+}
+
+#notesDetails h3,
+#notesPreview h3 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    margin-bottom: 20px;
+}
+
+#notesDetails #noteImageData h1 {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+}
+
+#notesDetails #noteImageData h2 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+    color: #333333;
+}
+
+#notesDetails #noteImageData p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #333333;
+}
+
+#notesCustomers p.customerName {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+    color: #333333;
+    margin-bottom: 0;
+}
+
+#notesCustomers p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #333333;
+}
+
+#notesCustomers .cust {
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid #d1d1d1;
+}
+
+
+
+/*noteDetail CSS end*/
+
+
+
+
+/*pagination CSS start*/
+.pagination li a{
+    margin:0px 20px;
+}
+
+.pagination li a {
+    font-size: 16px;
+    padding: 10px 15px;
+    color: #6255a5;
+}
+
+
+.pagination {
+    margin-top: 20px;
+}
+
+
+.pagination li:hover a {
+    background-color: #6255a5;
+    color: white !important;
+    border-radius: 50%;
+}
+
+.page-link {
+    border: none !important;
+    color: #333333 !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+}
+
+.pagination li.PagedList-pageCountAndLocation a{
+    background-color: #6255a5 !important;
+    border-radius:0% !important;
+    color:white !important;
+}
+
+.pagination li.PagedList-pageCountAndLocation:hover a{
+    border-radius:0% !important;
+}
+/*pagination CSS end*/
+
+
+
+
+/*modal CSS start*/
+.modal-body {
+    padding: 0px 55px 30px 40px !important;
+}
+
+.modal-header {
+    padding-top: 50px !important;
+}
+
+.modal-header button:focus {
+    outline: none;
+}
+
+.modal-body h5 {
+    color: #6255a5;
+}
+
+.modal-body h3 {
+    color: #6255a5;
+    margin-bottom: 20px;
+}
+
+.modal-body i {
+    font-size: 30px;
+    margin: 20px 20px 20px 0px;
+    color: #fec107;
+}
+
+.modal-body h1 {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 30px;
+    color: #6255a5;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.modal-body h2 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #333333;
+}
+
+.modal-body p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+}
+
+.modal-header {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    border: none !important;
+}
+
+.modal-confirmation {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.modal-confirmation a {
+    width: 200px !important;
+}
+
+.spamModal {
+    margin-top: 20px;
+}
+
+.addReview-popup {
+    margin-top: 20px;
+}
+
+.addReview-popup .btn {
+    width: 200px !important;
+}
+
+/*modal CSS end*/
+
+
+
+/*dynamic review CSS start*/
+.rate {
+    padding: 0 10px;
+    float: left;
+}
+
+.rate:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rate:not(:checked)>label {
+    overflow: hidden;
+}
+
+.rate:not(:checked)>label:before {
+    content: '★ ';
+    font-size: 50px;
+}
+
+.rate:not(:checked)>label {
+    float: right;
+    width: 2em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate>input:checked~label {
+    color: #fec107;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+    color: #deb217;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+    color: #fec107;
+}
+
+/*dynamic review CSS end*/
+
+
+
+/*dashboard CSS start*/
+.dashboardData .dashboard-flex-content h1,
+.dashboardData .dashboard-flex-content h1 a {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 34px;
+    color: #6255a5;
+}
+
+.dashboardData .dashboard-flex-content h2 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+}
+
+.dashboardData {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: center;
+}
+
+.dashboardData:nth-child(1) .dashboard-flex-content:nth-child(n) {
+    padding: 30px 10px;
+    width: 32%;
+}
+
+.dashboardData:nth-child(1) .dashboard-flex-content:nth-child(1) {
+    border: 1px solid #d1d1d1;
+}
+
+.dashboardData:nth-child(1) .dashboard-flex-content:nth-child(2),
+.dashboardData:nth-child(1) .dashboard-flex-content:nth-child(3) {
+    flex-grow: 2;
+    border-top: 1px solid #d1d1d1;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.dashboardData:nth-child(1) .dashboard-flex-content:nth-child(3) {
+    border-right: 1px solid #d1d1d1;
+}
+
+.dashboardData:nth-child(2) .dashboard-flex-content:nth-child(n) {
+    padding: 30px 10px;
+    border: 1px solid #d1d1d1;
+    width: 32%;
+}
+
+.searchBarSection .dashboard-heading h1 {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+}
+
+/*dashboard CSS end*/
+
+
+
+/*dropdown menu CSS start*/
+.dropdown-menu .dropdown-item:hover {
+    background-color: #6255a5;
+    color: white;
+}
+
+.dropdown-menu button:focus {
+    outline: none;
+}
+
+li.dropdown .dropdown-menu {
+    transform: translateX(-50px);
+}
+
+/*dropdown menu CSS end*/
+
+
+
+/*footer CSS start*/
+.social-icons a {
+    background-color: #6255a5;
+    padding: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.social-icons a:hover {
+    background-color: #473e78;
+}
+.social-icons i {
+    color: white;
+}
+
+.footer-row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 60px;
+    border-top: 1px solid #6255a5;
+}
+
+footer .container {
+    margin-top: -60px;
+}
+
+.ForFooterAtEnd {
+    display:flex;
+    min-height:100vh;
+    flex-direction:column;
+}
+/*footer CSS end*/
+/*FAQ CSS start*/
+.question span {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+}
+
+.question i {
+    float: right;
+    line-height: 22px;
+}
+
+.question {
+    padding: 18px 40px;
+    background-color: #f3f3f3;
+}
+
+.answer {
+    padding: 18px 40px;
+    border: 1px solid #d1d1d1;
+}
+
+.answer span {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+}
+
+.answer i {
+    float: right;
+    line-height: 22px;
+}
+
+.answer p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+    margin-top: 20px;
+}
+
+.hide-me[aria-expanded="true"] {
+    display: none;
+}
+
+.question-list {
+    margin-bottom: 20px;
+    transition: height 0.2s ease;
+}
+
+#questionSection {
+    transition: height 0.2s ease;
+}
+
+.question,
+.answer {
+    transition: height 0.2s ease;
+}
+
+/*FAQ CSS end*/
+
+
+/*radio button CSS start*/
+.radio-item {
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.radio-content label {
+    margin-top: -10px;
+    margin-right: 30px;
+}
+
+.radio-item input[type='radio'] {
+    -webkit-appearance: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    outline: none;
+    border: 1px solid #d1d1d1;
+}
+
+.radio-item input[type='radio']:before {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: 12px;
+    border-radius: 50%;
+}
+
+.radio-item input[type="radio"]:checked:before {
+    background: #6255a5;
+}
+
+.radio-item input[type="radio"]:checked {
+    border-color: #6255a5;
+}
+
+/*radio button CSS end*/
+
+
+
+/*contact us CSS start*/
+.ContactClass label {
+    line-height: 20px !important;
+}
+/*contact us CSS end*/
+
+
+
+/*Add Notes CSS start*/
+.TextAreAddNotes {
+    width: 100%;
+}
+/*Add Notes CSS end*/

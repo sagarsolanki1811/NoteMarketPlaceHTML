@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TatvaDBModelStoreContainer" CdmEntityContainer="TatvaDBEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="TatvaDBModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Secondary_Email" ColumnName="Secondary_Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Confirm_Password" ColumnName="Confirm_Password" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Phone_Number_Country_Code" ColumnName="Phone_Number_Country_Code" />
+          <ScalarProperty Name="Profile_Picture" ColumnName="Profile_Picture" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+          <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />
+          <ScalarProperty Name="Deactivated_Date" ColumnName="Deactivated_Date" />
+          <ScalarProperty Name="Deactivated_By" ColumnName="Deactivated_By" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BuyerReqs">
+      <EntityTypeMapping TypeName="TatvaDBModel.BuyerReq">
+        <MappingFragment StoreEntitySet="BuyerReq">
+          <ScalarProperty Name="buyer_req_id" ColumnName="buyer_req_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="note_id" ColumnName="note_id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="TatvaDBModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+          <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />
+          <ScalarProperty Name="Deactivated_Date" ColumnName="Deactivated_Date" />
+          <ScalarProperty Name="Deactivated_By" ColumnName="Deactivated_By" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="TatvaDBModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+          <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />
+          <ScalarProperty Name="Deactivated_Date" ColumnName="Deactivated_Date" />
+          <ScalarProperty Name="Deactivated_By" ColumnName="Deactivated_By" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NoteDetails">
+      <EntityTypeMapping TypeName="TatvaDBModel.NoteDetail">
+        <MappingFragment StoreEntitySet="NoteDetails">
+          <ScalarProperty Name="note_id" ColumnName="note_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Display_Picture" ColumnName="Display_Picture" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="No_Of_Pages" ColumnName="No_Of_Pages" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Institute_Name" ColumnName="Institute_Name" />
+          <ScalarProperty Name="Course_Name" ColumnName="Course_Name" />
+          <ScalarProperty Name="Course_Code" ColumnName="Course_Code" />
+          <ScalarProperty Name="Professor" ColumnName="Professor" />
+          <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+          <ScalarProperty Name="Sell_Price" ColumnName="Sell_Price" />
+          <ScalarProperty Name="Note_Preview" ColumnName="Note_Preview" />
+          <ScalarProperty Name="Action_By" ColumnName="Action_By" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+          <ScalarProperty Name="Published_Date" ColumnName="Published_Date" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NoteDetailsFiles">
+      <EntityTypeMapping TypeName="TatvaDBModel.NoteDetailsFile">
+        <MappingFragment StoreEntitySet="NoteDetailsFiles">
+          <ScalarProperty Name="note_attach_id" ColumnName="note_attach_id" />
+          <ScalarProperty Name="note_id" ColumnName="note_id" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+          <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />
+          <ScalarProperty Name="Deactivated_Date" ColumnName="Deactivated_Date" />
+          <ScalarProperty Name="Deactivated_By" ColumnName="Deactivated_By" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rejects">
+      <EntityTypeMapping TypeName="TatvaDBModel.Reject">
+        <MappingFragment StoreEntitySet="Reject">
+          <ScalarProperty Name="reject_id" ColumnName="reject_id" />
+          <ScalarProperty Name="note_id" ColumnName="note_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Rejected_Date" ColumnName="Rejected_Date" />
+          <ScalarProperty Name="Rejected_By" ColumnName="Rejected_By" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="TatvaDBModel.Review">
+        <MappingFragment StoreEntitySet="Review">
+          <ScalarProperty Name="review_id" ColumnName="review_id" />
+          <ScalarProperty Name="note_id" ColumnName="note_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Spams">
+      <EntityTypeMapping TypeName="TatvaDBModel.Spam">
+        <MappingFragment StoreEntitySet="Spam">
+          <ScalarProperty Name="spam_id" ColumnName="spam_id" />
+          <ScalarProperty Name="note_id" ColumnName="note_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Deactivated_Date" ColumnName="Deactivated_Date" />
+          <ScalarProperty Name="Deactivated_By" ColumnName="Deactivated_By" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemConfigs">
+      <EntityTypeMapping TypeName="TatvaDBModel.SystemConfig">
+        <MappingFragment StoreEntitySet="SystemConfig">
+          <ScalarProperty Name="system_id" ColumnName="system_id" />
+          <ScalarProperty Name="Support_Email_Address" ColumnName="Support_Email_Address" />
+          <ScalarProperty Name="Support_Phone_Number" ColumnName="Support_Phone_Number" />
+          <ScalarProperty Name="EmailForNotify" ColumnName="EmailForNotify" />
+          <ScalarProperty Name="Default_User_Profile_Picture" ColumnName="Default_User_Profile_Picture" />
+          <ScalarProperty Name="Default_Note_Profile_Picture" ColumnName="Default_Note_Profile_Picture" />
+          <ScalarProperty Name="FB_URL" ColumnName="FB_URL" />
+          <ScalarProperty Name="LinkedIn_URL" ColumnName="LinkedIn_URL" />
+          <ScalarProperty Name="Twitter_URL" ColumnName="Twitter_URL" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+          <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="TatvaDBModel.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+          <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />
+          <ScalarProperty Name="Deactivated_Date" ColumnName="Deactivated_Date" />
+          <ScalarProperty Name="Deactivated_By" ColumnName="Deactivated_By" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="TatvaDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Confirm_Password" ColumnName="Confirm_Password" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Phone_Number_Country_Code" ColumnName="Phone_Number_Country_Code" />
+          <ScalarProperty Name="Profile_Picture" ColumnName="Profile_Picture" />
+          <ScalarProperty Name="Address_1" ColumnName="Address_1" />
+          <ScalarProperty Name="Address_2" ColumnName="Address_2" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="College" ColumnName="College" />
+          <ScalarProperty Name="University" ColumnName="University" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Modified_Date" ColumnName="Modified_Date" />
+          <ScalarProperty Name="Modified_By" ColumnName="Modified_By" />
+          <ScalarProperty Name="Deactivated_Date" ColumnName="Deactivated_Date" />
+          <ScalarProperty Name="Deactivated_By" ColumnName="Deactivated_By" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

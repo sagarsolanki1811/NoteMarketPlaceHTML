@@ -1,0 +1,228 @@
+﻿@using WebApplication.Models
+@{
+    Layout = "~/Views/Shared/H_F_1.cshtml";
+    ViewBag.Title = "noteDetail";
+    NoteDetail note = ViewBag.NoteData;
+    SystemConfig system = ViewBag.SystemData;
+    User user1 = ViewBag.JustForName;
+    IEnumerable<WebApplication.Models.Review> customers = ViewBag.review_list as IEnumerable<WebApplication.Models.Review>;
+}
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="container" id="notesDetails">
+        <div class="row">
+            <div class="text-center">
+                <p class="text-success">@ViewBag.ReqSubmitted</p>
+                <p class="text-success">@ViewBag.mess</p>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12" id="notesDetailsHeading">
+                <h3>Notes Details</h3>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12" id="noteImageData">
+                <div class="row">
+                    <div class="col-lg-6 col-md-5 col-sm-5 col-12">
+                        <img src="@note.Display_Picture" alt="notes" style="width:100%;height:100%">
+                    </div>
+                    <div class="col-lg-6 col-md-7 col-sm-7 col-12" id="noteImageData-heading">
+                        <h1>@note.File_Name</h1>
+                        <h2>@note.Category</h2>
+                        <p>
+                            @note.Description
+                        </p>
+
+                        @if (note.Sell_Price > 0)
+                        {
+                            <input type="button" class="btn shadow-none" value="DOWNLOAD / @note.Sell_Price" data-toggle="modal" data-target="#modalNotesDownloadPaid" />
+
+                        }
+                        else
+                        {
+                            <input type="button" class="btn shadow-none" value="DOWNLOAD" onclick="location.href = '@Url.Action("NoteDetails", "Home")?download=FreeDownload'" />
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="offset-lg-1 col-lg-5 col-md-12 col-sm-12 col-12 note-row-content">
+                <div class="note-row">
+                    Institution: <span> @note.Institute_Name</span>
+                </div>
+                <div class="note-row">
+                    Country: <span> @note.Country</span>
+                </div>
+                <div class="note-row">
+                    Course Name: <span>@note.Course_Name </span>
+                </div>
+                <div class="note-row">
+                    Course Code: <span>@note.Course_Code</span>
+                </div>
+                <div class="note-row">
+                    Professor: <span>@note.Professor </span>
+                </div>
+                <div class="note-row">
+                    No. Of Pages: <span>@note.No_Of_Pages</span>
+                </div>
+                <div class="note-row">
+                    Approved Date:
+                    <span>@note.Published_Date</span>
+                </div>
+                <div class="note-row">
+                    Rating: <span>
+                        @if (note.Reviews.Count() != 0)
+                        {
+                            for (int i = 0; i < (int)@note.Reviews.Average(a => a.Rating); i++)
+                            {
+                                <img src="~/Content/Images/star.png" height="20px;" width="20px;" alt="star" />
+                            }
+                            for (int i = (int)@note.Reviews.Average(a => a.Rating); i < 5; i++)
+                            {
+                                <img src="~/Content/Images/star-white.png" height="20px;" width="20px;" alt="star" />
+                            }
+                            @note.Reviews.Count() <span>Reviews</span>
+                        }
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12 col-sm-12 col-12"></div>
+
+            @if (note.Spams.Count() != 0)
+            {
+                <div class="col-lg-5 col-md-12 col-sm-12 col-12 note-row-red">
+                    @note.Spams.Count() users marks this note as inappropriate
+                </div>
+            }
+        </div>
+    </div>
+
+
+    <div class="container" id="notesPreview">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+                <h3>Notes Preview</h3>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-12 col-12">
+                <h3>Customers Reviews</h3>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+                <iframe src="@note.Note_Preview" style="width:100%;height:450px"></iframe>
+            </div>
+            
+            <div class="col-lg-7 col-md-7 col-sm-12 col-12" id="notesCustomers" style="height: 450px;overflow-y: scroll; ">
+                @if (note.Reviews.Count() != 0)
+                {
+
+                    foreach (WebApplication.Models.Review element in customers)
+                    {
+                        <div class="row cust">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-3">
+                                <img src="@element.User.Profile_Picture" class="rounded-circle img-fluid" alt="customer" style="width:50px;height:50px">
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-9">
+                                <p class="customerName">@element.User.Fname @element.User.Lname</p>
+                                @for (int i = 0; i < (int)element.Rating; i++)
+                                {
+                                    <img src="~/Content/Images/star.png" height="20px;" width="20px;" alt="star" />
+                                }
+
+                                @for (int i = (int)@element.Rating; i < 5; i++)
+                                {
+                                    <img src="~/Content/Images/star-white.png" height="20px;" width="20px;" alt="star" />
+                                }
+                                <p>
+                                    @element.Comment
+                                </p>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal when click download note when it is free-->
+    <div class="modal fade" id="modalNotesDownloadPaidConfirmation" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="location.href = '@Url.Action("NoteDetails", "Home")?download=Download'">
+                        <span aria-hidden="true">&#10005;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="~/Content/Images/Notes_Details/SUCCESS.png" alt="success" class="img-fluid" style="width:63px;height:63px">
+                    </div>
+                    <h1 class="text-center">Thank You For Purchasing!</h1>
+                    <h2>Hey, @user1.Fname</h2>
+                    <p>
+                        As this is paid notes - you need to pay to seller <b>@note.User.Fname @note.User.Lname</b> offline.We will send him an
+                        email
+                        that you wnat to download this note.He may contact you further for payment process
+                        completion.
+                    </p>
+                    <p>In case you have urgency, <br> Please contact us on <b>@system.Support_Phone_Number</b></p>
+                    <p>
+                        Once he received the payment and acknowledge us - selected notes you can see over my
+                        downloads
+                        tab for download.
+                    </p>
+                    <p>Have a good day.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal when click download note when it is paid -->
+     <div class="modal fade" id="modalNotesDownloadPaid" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&#10005;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center"><b>“Are you
+                                sure you want to download this Paid note. Please confirm.”</b></p>
+                        <div class="modal-confirmation">
+                            <a class="btn shadow-none" data-toggle="modal" data-target="#modalNotesDownloadPaidConfirmation">
+                                Yes
+                            </a>
+                            <a class="btn shadow-none" data-dismiss="modal">
+                                No
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    <!-- Modal when click on download but yet authorized user -->
+    <!-- <div class="modal fade" id="modalLogOut" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&#10005;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Please log in/register to download this note.</p>
+                    <div class="modal-confirmation">
+                         @Html.ActionLink("Register", "SignUp", "Auth", null, new { @class = "btn shadow-none" })
+                         @Html.ActionLink("Log In", "LogIn", "Auth", null, new { @class = "btn shadow-none" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</body>
+</html>

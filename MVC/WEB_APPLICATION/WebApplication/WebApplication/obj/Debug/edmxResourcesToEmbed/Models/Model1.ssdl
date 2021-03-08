@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TatvaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fname" Type="varchar(max)" Nullable="false" />
+    <Property Name="Lname" Type="varchar(max)" Nullable="false" />
+    <Property Name="Email" Type="varchar(max)" Nullable="false" />
+    <Property Name="Secondary_Email" Type="varchar(max)" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+    <Property Name="Confirm_Password" Type="varchar(max)" Nullable="false" />
+    <Property Name="Phone_Number" Type="varchar(max)" Nullable="false" />
+    <Property Name="Phone_Number_Country_Code" Type="varchar(max)" Nullable="false" />
+    <Property Name="Profile_Picture" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Created_Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Created_By" Type="int" />
+    <Property Name="Modified_Date" Type="datetime2" Precision="7" />
+    <Property Name="Modified_By" Type="int" />
+    <Property Name="Deactivated_Date" Type="datetime2" Precision="7" />
+    <Property Name="Deactivated_By" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BuyerReq">
+    <Key>
+      <PropertyRef Name="buyer_req_id" />
+    </Key>
+    <Property Name="buyer_req_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="note_id" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Req_Created_Date" Type="datetime2" Precision="7" />
+    <Property Name="Req_Solved_Date" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Created_Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Created_By" Type="int" />
+    <Property Name="Modified_Date" Type="datetime2" Precision="7" />
+    <Property Name="Modified_By" Type="int" />
+    <Property Name="Deactivated_Date" Type="datetime2" Precision="7" />
+    <Property Name="Deactivated_By" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactUs">
+    <Key>
+      <PropertyRef Name="contact_id" />
+    </Key>
+    <Property Name="contact_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Full_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Comments_Questions" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="country_id" />
+    </Key>
+    <Property Name="country_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="Country_Code" Type="varchar(max)" Nullable="false" />
+    <Property Name="Created_Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Created_By" Type="int" />
+    <Property Name="Modified_Date" Type="datetime2" Precision="7" />
+    <Property Name="Modified_By" Type="int" />
+    <Property Name="Deactivated_Date" Type="datetime2" Precision="7" />
+    <Property Name="Deactivated_By" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NoteDetails">
+    <Key>
+      <PropertyRef Name="note_id" />
+    </Key>
+    <Property Name="note_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="File_Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="File_Path" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Category" Type="varchar(max)" Nullable="false" />
+    <Property Name="Display_Picture" Type="nvarchar(max)" />
+    <Property Name="Type" Type="varchar(max)" Nullable="false" />
+    <Property Name="No_Of_Pages" Type="int" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Country" Type="varchar(max)" />
+    <Property Name="Institute_Name" Type="varchar(max)" />
+    <Property Name="Course_Name" Type="varchar(max)" />
+    <Property Name="Course_Code" Type="varchar(max)" />
+    <Property Name="Professor" Type="varchar(max)" />
+    <Property Name="IsPaid" Type="bit" Nullable="false" />
+    <Property Name="Sell_Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Note_Preview" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Action_By" Type="int" />
+    <Property Name="Created_Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Modified_Date" Type="datetime2" Precision="7" />
+    <Property Name="Published_Date" Type="datetime2" Precision="7" />
+    <Property Name="Status" Type="varchar(max)" Nullable="false" />
+    <Property Name="No_Of_Download" Type="bigint" Nullable="false" />
+    <Property Name="Earning_Amount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NoteType">
+    <Key>
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Created_Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Created_By" Type="int" />
+    <Property Name="Modified_Date" Type="datetime2" Precision="7" />
+    <Property Name="Modified_By" Type="int" />
+    <Property Name="Deactivated_Date" Type="datetime2" Precision="7" />
+    <Property Name="Deactivated_By" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="review_id" />
+    </Key>
+    <Property Name="review_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="note_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="Rating" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+    <Property Name="Comment" Type="varchar(max)" Nullable="false" />
+    <Property Name="Created_Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Deactivated_Date" Type="datetime2" Precision="7" />
+    <Property Name="Deactivated_By" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spam">
+    <Key>
+      <PropertyRef Name="spam_id" />
+    </Key>
+    <Property Name="spam_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="note_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="varchar(max)" Nullable="false" />
+    <Property Name="Created_Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Deactivated_Date" Type="datetime2" Precision="7" />
+    <Property Name="Deactivated_By" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemConfig">
+    <Key>
+      <PropertyRef Name="system_id" />
+    </Key>
+    <Property Name="system_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Support_Email_Address" Type="varchar(max)" Nullable="false" />
+    <Property Name="Support_Phone_Number" Type="varchar(max)" Nullable="false" />
+    <Property Name="EmailForNotify" Type="varchar(max)" Nullable="false" />
+    <Property Name="Default_User_Profile_Picture" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Default_Note_Profile_Picture" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FB_URL" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LinkedIn_URL" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Twitter_URL" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Created_Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Created_By" Type="int" />
+    <Property Name="Modified_Date" Type="datetime2" Precision="7" />
+    <Property Name="Modified_By" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fname" Type="varchar(max)" Nullable="false" />
+    <Property Name="Lname" Type="varchar(max)" Nullable="false" />
+    <Property Name="Email" Type="varchar(max)" Nullable="false" />
+    <Property Name="IsEmailVerified" Type="bit" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" />
+    <Property Name="Confirm_Password" Type="varchar(max)" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Gender" Type="varchar(max)" />
+    <Property Name="Phone_Number" Type="varchar(max)" />
+    <Property Name="Phone_Number_Country_Code" Type="varchar(max)" />
+    <Property Name="Profile_Picture" Type="varchar(max)" />
+    <Property Name="Address_1" Type="varchar(max)" />
+    <Property Name="Address_2" Type="varchar(max)" />
+    <Property Name="ZipCode" Type="varchar(max)" />
+    <Property Name="City" Type="varchar(max)" />
+    <Property Name="State" Type="varchar(max)" />
+    <Property Name="Country" Type="varchar(max)" />
+    <Property Name="College" Type="varchar(max)" />
+    <Property Name="University" Type="varchar(max)" />
+    <Property Name="Created_Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Created_By" Type="int" />
+    <Property Name="Modified_Date" Type="datetime2" Precision="7" />
+    <Property Name="Modified_By" Type="int" />
+    <Property Name="Deactivated_Date" Type="datetime2" Precision="7" />
+    <Property Name="Deactivated_By" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Activation_Code" Type="uniqueidentifier" />
+  </EntityType>
+  <Association Name="BuyerReq and NoteDetails">
+    <End Role="NoteDetails" Type="Self.NoteDetails" Multiplicity="1" />
+    <End Role="BuyerReq" Type="Self.BuyerReq" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NoteDetails">
+        <PropertyRef Name="note_id" />
+      </Principal>
+      <Dependent Role="BuyerReq">
+        <PropertyRef Name="note_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BuyerReq and User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BuyerReq" Type="Self.BuyerReq" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="BuyerReq">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NoteDetails and User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="NoteDetails" Type="Self.NoteDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="NoteDetails">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Review and NoteDetails">
+    <End Role="NoteDetails" Type="Self.NoteDetails" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NoteDetails">
+        <PropertyRef Name="note_id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="note_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Review and User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Spam and NoteDetails">
+    <End Role="NoteDetails" Type="Self.NoteDetails" Multiplicity="1" />
+    <End Role="Spam" Type="Self.Spam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NoteDetails">
+        <PropertyRef Name="note_id" />
+      </Principal>
+      <Dependent Role="Spam">
+        <PropertyRef Name="note_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Spam and User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Spam" Type="Self.Spam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Spam">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TatvaDBModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BuyerReq" EntityType="Self.BuyerReq" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContactUs" EntityType="Self.ContactUs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NoteDetails" EntityType="Self.NoteDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NoteType" EntityType="Self.NoteType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spam" EntityType="Self.Spam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemConfig" EntityType="Self.SystemConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="BuyerReq and NoteDetails" Association="Self.BuyerReq and NoteDetails">
+      <End Role="NoteDetails" EntitySet="NoteDetails" />
+      <End Role="BuyerReq" EntitySet="BuyerReq" />
+    </AssociationSet>
+    <AssociationSet Name="BuyerReq and User" Association="Self.BuyerReq and User">
+      <End Role="User" EntitySet="User" />
+      <End Role="BuyerReq" EntitySet="BuyerReq" />
+    </AssociationSet>
+    <AssociationSet Name="NoteDetails and User" Association="Self.NoteDetails and User">
+      <End Role="User" EntitySet="User" />
+      <End Role="NoteDetails" EntitySet="NoteDetails" />
+    </AssociationSet>
+    <AssociationSet Name="Review and NoteDetails" Association="Self.Review and NoteDetails">
+      <End Role="NoteDetails" EntitySet="NoteDetails" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="Review and User" Association="Self.Review and User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="Spam and NoteDetails" Association="Self.Spam and NoteDetails">
+      <End Role="NoteDetails" EntitySet="NoteDetails" />
+      <End Role="Spam" EntitySet="Spam" />
+    </AssociationSet>
+    <AssociationSet Name="Spam and User" Association="Self.Spam and User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Spam" EntitySet="Spam" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

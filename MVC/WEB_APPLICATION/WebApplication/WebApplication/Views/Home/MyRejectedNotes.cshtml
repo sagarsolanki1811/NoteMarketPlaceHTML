@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "~/Views/Shared/H_F_1.cshtml";
+    ViewBag.Title = "myRejectedNotes";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="container">
+        <div class="row searchBarSection">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <h1>My Rejected Notes</h1>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 input-group form-inline d-flex justify-content-center md-form form-sm mt-0">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">
+                        <img src="~/Content/Images/Dashboard/search.jpg" alt="search">
+                    </span>
+                </div>
+                <input type="text" class="form-control" aria-label="search" aria-describedby="addon-wrapping"
+                       placeholder="search">
+                @Html.ActionLink("SEARCH", "Search", "OtherEvent", null, new { @class = "btn shadow-none" })
+            </div>
+        </div>
+        <div class="table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm table-responsive">
+            <table class="table progressTable text-center">
+                <thead>
+                    <tr>
+                        <th>SR NO.</th>
+                        <th>NOTE TITLE</th>
+                        <th>CATEGORY</th>
+                        <th>REMARKS</th>
+                        <th>CLONE</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipis</td>
+                        <td>clone</td>
+                        <td class="dropdown">
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item shadow-none" type="button">Download Note</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipis</td>
+                        <td>clone</td>
+                        <td class="dropdown">
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item shadow-none" type="button">Download Note</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipis</td>
+                        <td>clone</td>
+                        <td class="dropdown">
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item shadow-none" type="button">Download Note</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipis</td>
+                        <td>clone</td>
+                        <td class="dropdown">
+                            <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                @Html.ActionLink("Download Note", "DownloadNote", "OtherEvent", null, new { @class = "dropdown-item shadow-none" })
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                    <i class="fa fa-angle-left"
+                       aria-hidden="true"></i>
+                </a>
+            </li>
+            <li><a class="page-link page-link1" href="#">1</a></li>
+            <li><a class="page-link" href="#">2</a></li>
+            <li><a class="page-link" href="#">3</a></li>
+            <li><a class="page-link" href="#">4</a></li>
+            <li><a class="page-link" href="#">5</a></li>
+            <li>
+                <a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
